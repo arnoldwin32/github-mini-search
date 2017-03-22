@@ -1,0 +1,75 @@
+<div class="container">
+
+  <div class="col-xs-4">
+    <div class="row">
+      <div class="twPc-div">
+        <a class="twPc-bg twPc-block"></a>
+        <div>
+          <div class="twPc-button">
+            <a href="" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false" data-dnt="true">Membro desde {{user.created_at|date:'dd/mm/yyyy'}}</a>
+          </div>
+          <a href="" class="twPc-avatarLink">
+            <img src="{{user.avatar_url}}" class="twPc-avatarImg">
+          </a>
+
+          <div class="twPc-divUser">
+            <div class="twPc-divName">
+              <a href="">{{user.name}}</a>
+            </div>
+            <span>
+              <a href="">{{user.email}}</a>
+            </span>
+          </div>
+
+          <div class="twPc-divStats">
+            <ul class="twPc-Arrange">
+              <li class="twPc-ArrangeSizeFit">
+                <a href="">
+                  <span class="twPc-StatLabel twPc-block">Repositórios</span>
+                  <span class="twPc-StatValue">{{user.public_repos}}</span>
+                </a>
+              </li>
+              <li class="twPc-ArrangeSizeFit">
+                <a href="">
+                  <span class="twPc-StatLabel twPc-block">Seguindo</span>
+                  <span class="twPc-StatValue">{{user.following}}</span>
+                </a>
+              </li>
+              <li class="twPc-ArrangeSizeFit">
+                <a href="">
+                  <span class="twPc-StatLabel twPc-block">Seguidores</span>
+                  <span class="twPc-StatValue">{{user.followers}}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-8">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="" data-toggle="tab" aria-expanded="true">Repositórios</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active in" id="repository">
+        <div class="list-group">
+            <a href="{{repo.html_url}}" target="_blank" class="list-group-item" ng-repeat="repo in repos">
+              <div class="row">
+                <div class="col-xs-10">
+                  <h4 class="list-group-item-heading">{{repo.name}} </h4>
+                  <h6 ng-if="repo.fork">Forked</h6>
+                  <h6>Atualizado em {{repo.updated_at|date:'dd/mm/yyyy'}}</h6>
+                  <p class="list-group-item-text">{{repo.description}}</p>
+                </div>
+                <div class="col-xs-2">
+                  {{repo.language}}
+                </div>
+              </div>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

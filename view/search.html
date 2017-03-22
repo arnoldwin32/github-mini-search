@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>{{app}}</h1>
+    <h2>{{message}}{{user}}</h2>
+    <div class="form-group">
+        <div class="icon-addon addon-lg">
+            <input type="text" class="form-control" placeholder="Pesquisar por nome de usuário" ng-model="searchTerm">
+            <label for="search" class="glyphicon glyphicon-search" rel="tooltip" title="search"></label>
+        </div>
+    </div>
+    <hr/>
+
+    <div class="row text-center" ng-show="loading">
+      <img src="../img/ripple.svg" />
+    </div>
+
+    <div class="row text-center" ng-hide="result">
+      <h3>{{users.message}}</h3>
+    </div>
+
+    <div class="row" ng-if="result">
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3" dir-paginate="user in users | itemsPerPage: 64">
+          <a href="#!/profile/{{user.login}}">
+           <div class="card">
+               <img class="card-img-top" src="{{user.avatar_url}}">
+               <div class="card-block">
+                   <h5 class="text-bold">{{user.login}}</h5>
+               </div>
+           </div>
+          </a>
+       </div>
+     </div>
+   </div>
+   <div class="row text-center" ng-if="result">
+     <dir-pagination-controls></dir-pagination-controls>
+   </div>
+  </div>
+</div>
