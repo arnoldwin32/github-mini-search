@@ -1,0 +1,15 @@
+{
+  "name": "github-mini-search",
+  "version": "1.0.0",
+  "description": "Github mini-search for angularJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server app/ -a localhost -p 8080 -c-1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bruno Fagundes",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  }
+}

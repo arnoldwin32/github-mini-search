@@ -1,0 +1,33 @@
+<html ng-app="miniSearch">
+<head>
+	<meta charset="UTF-8">
+	<title>Github mini search</title>
+	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<link rel="stylesheet" type="text/css" href="css/search.css">
+	<link rel="stylesheet" type="text/css" href="css/profile.css">
+	<link rel="stylesheet" type="text/css" href="lib/angular-loading-bar/build/loading-bar.min.css">
+
+</head>
+
+<body>
+	<div ng-include="'view/navbar.html'"></div>
+
+	<div ng-view></div>
+
+	<div ng-include="'view/footer.html'"></div>
+
+	<script src="lib/jquery/dist/jquery.min.js"></script>
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular-route/angular-route.min.js"></script>
+	<script src="lib/angular-loading-bar/build/loading-bar.min.js"></script>
+	<script src="lib/angularUtils-pagination/dirPagination.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/userSearchCtrl.js"></script>
+	<script src="js/controllers/userDetailCtrl.js"></script>
+	<script src="js/controllers/headerCtrl.js"></script>
+	<script src="js/services/githubAPIService.js"></script>
+	<script src="js/config/routeConfig.js"></script>
+</body>
+</html>
