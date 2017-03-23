@@ -2,6 +2,8 @@
 
 Esse é um exercício de avaliação técnica feito com angularJS para consumir a API do github.
 
+![Image of Github mini search](screen.png)
+
 ## Requirements
 
 ```
