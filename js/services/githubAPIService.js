@@ -1,7 +1,7 @@
 angular.module("miniSearch").factory('githubAPI', function($http) {
 
   var _getUsers = function(searchTerm) {
-    return $http.get('https://api.github.com/search/users', { params: { q: searchTerm, per_page: "128" } });
+    return $http.get('https://api.github.com/search/users', { params: { q: searchTerm, per_page: "100" } });
   };
 
   var _getUserDetail = function(user) {
