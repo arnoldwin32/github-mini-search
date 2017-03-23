@@ -15,18 +15,21 @@ angular.module("miniSearch").controller("userSearchCtrl", function ($scope, $tim
 	$scope.searchUser = function (searchTerm) {
 		if(searchTerm && searchTerm.length > 0){
 			$scope.loading = true;
-			githubAPI.getUsers(searchTerm).then(function (response) {
-					if(response && response.data.total_count){
+			$scope.users = {};
+			githubAPI.getUsers(searchTerm).then(
+				function (response) {
+					if (response && response.data.total_count) {
 						$scope.result = true;
 						$scope.users = response.data.items;
-					}else{
+					} else {
 						$scope.result = false;
-						$scope.users = {};
 						$scope.users.message = "Nenhum usuário encontrado :("
 					}
-	    }, function(data) {
-	        $scope.message = "Aconteceu um problema: " + data;
-	    }).
+	    	}, function(response) {
+					$scope.users.message = "Aconteceu um erro";
+					if (response.status == 403) $scope.users.message = "Quantidade de requisições excedida, por favor tente novamente no próximo minuto.";
+	    	}
+			).
 			finally(function() {
 				$scope.loading = false;
 			});
