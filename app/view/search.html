@@ -20,7 +20,7 @@
 
     <div class="row" ng-if="result">
       <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3" dir-paginate="user in users | itemsPerPage: 64">
+        <div class="col-sm-6 col-md-4 col-lg-3" dir-paginate="user in users | itemsPerPage: 32">
           <a href="#!/profile/{{user.login}}">
            <div class="card">
                <img class="card-img-top" ng-src="{{user.avatar_url}}">
