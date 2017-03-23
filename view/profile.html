@@ -55,7 +55,7 @@
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane fade active in" id="repository">
         <div class="list-group">
-            <a href="{{repo.html_url}}" target="_blank" class="list-group-item" ng-repeat="repo in repos">
+            <a href="{{repo.html_url}}" target="_blank" class="list-group-item" ng-repeat="repo in repos|orderBy:'repo.updated_at'">
               <div class="row">
                 <div class="col-xs-10">
                   <h4 class="list-group-item-heading">{{repo.name}} </h4>
