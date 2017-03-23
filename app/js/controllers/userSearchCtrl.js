@@ -1,7 +1,7 @@
 angular.module("miniSearch").controller("userSearchCtrl", function ($scope, $timeout, githubAPI) {
 	$scope.app = "Github mini search";
 	$scope.result = false;
-	$scope.searchTerm = ""
+	$scope.searchTerm = "";
 
 	var timeoutPromise;
   var delayInMs = 1000;
