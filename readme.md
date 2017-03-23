@@ -1,6 +1,6 @@
 # Github mini search
 
-Esse é um Exercício de avaliação técnica feito com angularJS para consumir a API do github.
+Esse é um exercício de avaliação técnica feito com angularJS para consumir a API do github.
 
 ## Requirements
 
