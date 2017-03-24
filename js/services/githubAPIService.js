@@ -1,4 +1,8 @@
-angular.module("miniSearch").factory('githubAPI', function($http) {
+angular.module("miniSearch").factory('githubAPI', function($http, $cacheFactory) {
+
+  var _githubCache = function(){
+    return $cacheFactory('githubCache', {capacity: 3});
+  }
 
   var _getUsers = function(searchTerm) {
     return $http.get('https://api.github.com/search/users', {
@@ -25,7 +29,8 @@ angular.module("miniSearch").factory('githubAPI', function($http) {
     getUsers: _getUsers,
     getUserDetail: _getUserDetail,
     getUserRepos: _getUserRepos,
-    getUserGists: _getUserGists
+    getUserGists: _getUserGists,
+    githubCache: _githubCache()
   };
 
 });
