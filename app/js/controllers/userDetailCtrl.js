@@ -8,23 +8,31 @@ angular.module("miniSearch").controller("userDetailCtrl", function($scope, $rout
   });
 
   githubAPI.getUserRepos(user).then(function(response) {
-    $scope.repos = response.data;
-    angular.forEach($scope.repos, function(value, key) {
-      value.description = value.description || "Sem drescrição";
-    });
+    if (response && response.data.length) {
+      $scope.repos = response.data;
+      angular.forEach($scope.repos, function(value, key) {
+        value.description = value.description || "Sem drescrição";
+      });
+    } else {
+      $scope.repoMessage = "Usuário sem repositórios"
+    }
   }, function(data) {
-    $scope.message = "Aconteceu um problema: " + data;
+    $scope.repoMessage = "Aconteceu um problema: " + data;
   });
 
   githubAPI.getUserGists(user).then(function(response) {
-    $scope.gists = response.data;
-    angular.forEach($scope.gists, function(value, key) {
-      for(name in value.files){
-        value.name = name;
-      }
-    });
+    if (response && response.data.length) {
+      $scope.gists = response.data;
+      angular.forEach($scope.gists, function(value, key) {
+        for (name in value.files) {
+          value.name = name;
+        }
+      });
+    } else {
+      $scope.gistMessage = "Usuário sem gists"
+    }
   }, function(data) {
-    $scope.message = "Aconteceu um problema: " + data;
+    $scope.gistMessage = "Aconteceu um problema: " + data;
   });
 
 });
