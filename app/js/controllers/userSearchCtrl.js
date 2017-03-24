@@ -23,16 +23,19 @@ angular.module("miniSearch").controller("userSearchCtrl", function ($scope, $tim
 						$scope.users = response.data.items;
 					} else {
 						$scope.result = false;
-						$scope.users.message = "Nenhum usuário encontrado :("
+						$scope.message = "Nenhum usuário encontrado :("
 					}
 	    	}, function(response) {
 					$scope.users.message = "Aconteceu um erro";
-					if (response.status == 403) $scope.users.message = "Quantidade de requisições excedida, por favor tente novamente no próximo minuto.";
+					if (response.status == 403) $scope.message = "Quantidade de requisições excedida, por favor tente novamente no próximo minuto.";
 	    	}
 			).
 			finally(function() {
 				$scope.loading = false;
 			});
+		} else {
+			$scope.result = false;
+			$scope.users = {};
 		}
 	};
 

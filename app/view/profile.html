@@ -1,75 +1,101 @@
-<div class="container">
-
-  <div class="col-xs-4">
+<div class="container pt-60">
+  <div class="col-md-4">
     <div class="row">
-      <div class="twPc-div">
-        <a class="twPc-bg twPc-block"></a>
-        <div>
-          <div class="twPc-button">
-            <a href="" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false" data-dnt="true">Membro desde {{user.created_at|date:'dd/mm/yyyy'}}</a>
-          </div>
-          <a href="" class="twPc-avatarLink">
-            <img src="{{user.avatar_url}}" class="twPc-avatarImg">
-          </a>
-
-          <div class="twPc-divUser">
-            <div class="twPc-divName">
-              <a href="">{{user.name}}</a>
-            </div>
-            <span>
-              <a href="">{{user.email}}</a>
-            </span>
+      <div class="profile-picture">
+        <div class="col-md-12">
+          <img class="img-responsive picture" src="{{user.avatar_url}}">
+          <div class="username">
+            <h2>{{user.name}}</h2>
+            <p ng-if="user.email"><i class="glyphicon glyphicon-envelope"></i> {{user.email}}</p>
+            <p ng-if="user.created_at"><i class="glyphicon glyphicon-calendar"></i> Membro desde {{user.created_at|date:"dd/mm/yyyy"}}</p>
           </div>
 
-          <div class="twPc-divStats">
-            <ul class="twPc-Arrange">
-              <li class="twPc-ArrangeSizeFit">
-                <a href="">
-                  <span class="twPc-StatLabel twPc-block">Repositórios</span>
-                  <span class="twPc-StatValue">{{user.public_repos}}</span>
-                </a>
-              </li>
-              <li class="twPc-ArrangeSizeFit">
-                <a href="">
-                  <span class="twPc-StatLabel twPc-block">Seguindo</span>
-                  <span class="twPc-StatValue">{{user.following}}</span>
-                </a>
-              </li>
-              <li class="twPc-ArrangeSizeFit">
-                <a href="">
-                  <span class="twPc-StatLabel twPc-block">Seguidores</span>
-                  <span class="twPc-StatValue">{{user.followers}}</span>
-                </a>
-              </li>
-            </ul>
+        </div>
+
+      </div>
+    </div>
+    <div ng-if="user.bio" class="row text-center profile-bio">
+      <h4>{{user.bio}}</h4>
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="profile-stats">
+        <div class="profile-arrange">
+          <div class="col-md-3 text-center profile-arrangeSizeFit">
+            <span class="profile-statLabel profile-block">Repositórios</span>
+            <span class="profile-statValue">{{user.public_repos}}</span>
+          </div>
+          <div class="col-md-3 text-center profile-arrangeSizeFit">
+            <span class="profile-statLabel profile-block">Gists</span>
+            <span class="profile-statValue">{{user.public_gists}}</span>
+          </div>
+          <div class="col-md-3 text-center profile-arrangeSizeFit">
+            <span class="profile-statLabel profile-block">Seguindo</span>
+            <span class="profile-statValue">{{user.following}}</span>
+          </div>
+          <div class="col-md-3 text-center profile-arrangeSizeFit">
+            <span class="profile-statLabel profile-block">Seguidores</span>
+            <span class="profile-statValue">{{user.followers}}</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="col-xs-8">
+  <div class="col-md-8">
     <ul class="nav nav-tabs">
       <li class="active"><a href="" data-toggle="tab" aria-expanded="true">Repositórios</a></li>
     </ul>
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane fade active in" id="repository">
         <div class="list-group">
-            <a href="{{repo.html_url}}" target="_blank" class="list-group-item" ng-repeat="repo in repos|orderBy:'repo.updated_at'">
-              <div class="row">
-                <div class="col-xs-10">
-                  <h4 class="list-group-item-heading">{{repo.name}} </h4>
-                  <h6 ng-if="repo.fork">Forked</h6>
-                  <h6>Atualizado em {{repo.updated_at|date:'dd/mm/yyyy'}}</h6>
-                  <p class="list-group-item-text">{{repo.description}}</p>
-                </div>
-                <div class="col-xs-2">
-                  {{repo.language}}
-                </div>
+          <a href="{{repo.html_url}}" target="_blank" class="list-group-item" ng-repeat="repo in repos|orderBy:'repo.updated_at'">
+            <div class="row">
+              <div class="col-md-10">
+                <h4 class="list-group-item-heading">{{repo.name}} </h4>
+                <h6 ng-if="repo.fork">Forked</h6>
+                <h6>Atualizado em {{repo.updated_at|date:'dd/mm/yyyy'}}</h6>
+                <p class="list-group-item-text">{{repo.description}}</p>
               </div>
-            </a>
+              <div class="col-md-2">
+                {{repo.language}}
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  $(function() {
+    var Accordion = function(el, multiple) {
+      this.el = el || {};
+      this.multiple = multiple || false;
+
+      // Variables privadas
+      var links = this.el.find('.link');
+      // Evento
+      links.on('click', {
+        el: this.el,
+        multiple: this.multiple
+      }, this.dropdown)
+    }
+
+    Accordion.prototype.dropdown = function(e) {
+      var $el = e.data.el;
+      $this = $(this),
+        $next = $this.next();
+
+      $next.slideToggle();
+      $this.parent().toggleClass('open');
+
+      if (!e.data.multiple) {
+        $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+      };
+    }
+
+    var accordion = new Accordion($('#accordion'), false);
+  });
+</script>

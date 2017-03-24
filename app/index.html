@@ -1,22 +1,28 @@
 <html ng-app="miniSearch">
+
 <head>
 	<meta charset="UTF-8">
-	<title>Github mini search</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
 	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+
+	<title>Github mini search</title>
+
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 	<link rel="stylesheet" type="text/css" href="css/search.css">
 	<link rel="stylesheet" type="text/css" href="css/profile.css">
 	<link rel="stylesheet" type="text/css" href="lib/angular-loading-bar/build/loading-bar.min.css">
-
 </head>
 
 <body>
-	<div ng-include="'view/navbar.html'"></div>
+	<div ng-include="'view/_navbar.html'"></div>
 
 	<div ng-view></div>
 
-	<div ng-include="'view/footer.html'"></div>
+	<div ng-include="'view/_footer.html'"></div>
 
 	<script src="lib/jquery/dist/jquery.min.js"></script>
 	<script src="lib/angular/angular.min.js"></script>
@@ -30,4 +36,5 @@
 	<script src="js/services/githubAPIService.js"></script>
 	<script src="js/config/routeConfig.js"></script>
 </body>
+
 </html>
