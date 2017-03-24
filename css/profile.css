@@ -2,6 +2,10 @@
     border-bottom: 0px;
 }
 
+.nav-tabs > li {
+  background-color: #f5f5f5;
+}
+
 .nav-tabs > li > a
 {
     -webkit-border-radius: 0;
