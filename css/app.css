@@ -1,7 +1,14 @@
-body {
-  padding-top: 70px;
+.pt-50
+{
+  margin-top: 50px;
 }
 
-.bg-pink {
-  color: #ff0065;
+.pt-60
+{
+  margin-top: 60px;
+}
+
+.co-pink
+{
+    color: #ff0065;
 }
