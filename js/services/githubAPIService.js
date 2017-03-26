@@ -1,8 +1,10 @@
 angular.module("miniSearch").factory('githubAPI', function($http, $cacheFactory) {
 
-  var _githubCache = function(){
-    return $cacheFactory('githubCache', {capacity: 3});
-  }
+  var _githubCache = function() {
+    return $cacheFactory('githubCache', {
+      capacity: 10
+    });
+  };
 
   var _getUsers = function(searchTerm) {
     return $http.get('https://api.github.com/search/users', {

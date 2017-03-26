@@ -7,6 +7,7 @@ angular.module("miniSearch").controller("userDetailCtrl", function($scope, $rout
     $scope.message = "Aconteceu um problema: " + data;
   });
 
+
   githubAPI.getUserRepos(user).then(function(response) {
     if (response && response.data.length) {
       $scope.repos = response.data;
@@ -16,7 +17,8 @@ angular.module("miniSearch").controller("userDetailCtrl", function($scope, $rout
     } else {
       $scope.repoMessage = "Usuário sem repositórios"
     }
-  }, function(data) {
+  },
+  function(data) {
     $scope.repoMessage = "Aconteceu um problema: " + data;
   });
 
