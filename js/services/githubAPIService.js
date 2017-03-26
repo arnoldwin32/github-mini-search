@@ -25,12 +25,22 @@ angular.module("miniSearch").factory('githubAPI', function($http, $cacheFactory)
     return $http.get('https://api.github.com/users/' + user + '/gists');
   };
 
+  var _getUserFollowers = function(user) {
+    return $http.get('https://api.github.com/users/' + user + '/followers');
+  };
+
+  var _getUserFollowing = function(user) {
+    return $http.get('https://api.github.com/users/' + user + '/following');
+  };
+
   return {
+    githubCache: _githubCache(),
     getUsers: _getUsers,
     getUserDetail: _getUserDetail,
     getUserRepos: _getUserRepos,
     getUserGists: _getUserGists,
-    githubCache: _githubCache()
+    getUserFollowers: _getUserFollowers,
+    getUserFollowing: _getUserFollowing
   };
 
 });
