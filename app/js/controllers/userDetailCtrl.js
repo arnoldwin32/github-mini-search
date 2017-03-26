@@ -35,4 +35,24 @@ angular.module("miniSearch").controller("userDetailCtrl", function($scope, $rout
     $scope.gistMessage = "Aconteceu um problema: " + data;
   });
 
+  githubAPI.getUserFollowers(user).then(function(response) {
+    if (response && response.data.length) {
+      $scope.followers = response.data;
+    } else {
+      $scope.followerMessage = "Usuário não possui seguidores"
+    }
+  }, function(data) {
+    $scope.followerMessage = "Aconteceu um problema: " + data;
+  });
+
+  githubAPI.getUserFollowing(user).then(function(response) {
+    if (response && response.data.length) {
+      $scope.followings = response.data;
+    } else {
+      $scope.followingMessage = "Usuário não está seguindo ninguem"
+    }
+  }, function(data) {
+    $scope.followingMessage = "Aconteceu um problema: " + data;
+  });
+
 });

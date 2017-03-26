@@ -21,7 +21,7 @@ angular.module("miniSearch").controller("userSearchCtrl", function ($scope, $tim
 				$scope.result = true;
 				$scope.users = githubAPI.githubCache.get(searchTerm);
 				$scope.loading = false;
-			} else {			
+			} else {
 				githubAPI.getUsers(searchTerm).then(
 					function (response) {
 						if (response && response.data.total_count) {
