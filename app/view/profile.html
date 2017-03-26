@@ -22,19 +22,19 @@
         <div class="profile-arrange">
           <div class="col-md-3 text-center profile-arrangeSizeFit">
             <span class="profile-statLabel profile-block">Repositórios</span>
-            <span class="profile-statValue">{{user.public_repos}}</span>
+            <a ng-click="tab=1"><span class="profile-statValue">{{user.public_repos}}</span></a>
           </div>
           <div class="col-md-3 text-center profile-arrangeSizeFit">
             <span class="profile-statLabel profile-block">Gists</span>
-            <span class="profile-statValue">{{user.public_gists}}</span>
+            <a ng-click="tab=2"><span class="profile-statValue">{{user.public_gists}}</span></a>
           </div>
           <div class="col-md-3 text-center profile-arrangeSizeFit">
             <span class="profile-statLabel profile-block">Seguindo</span>
-            <span class="profile-statValue">{{user.following}}</span>
+            <a ng-click="tab=3"><span class="profile-statValue">{{user.following}}</span></a>
           </div>
           <div class="col-md-3 text-center profile-arrangeSizeFit">
             <span class="profile-statLabel profile-block">Seguidores</span>
-            <span class="profile-statValue">{{user.followers}}</span>
+            <a ng-click="tab=4"><span class="profile-statValue">{{user.followers}}</span></a>
           </div>
         </div>
       </div>
